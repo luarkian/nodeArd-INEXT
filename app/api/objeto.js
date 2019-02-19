@@ -12,5 +12,9 @@ module.exports = function(app){
 
 	};
 
+	api.edita = function (req, res){
+
+	};
+
 	return api;
 }
