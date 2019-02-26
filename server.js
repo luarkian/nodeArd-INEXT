@@ -4,6 +4,15 @@ const http = require('http').Server(app);
 const SerialPort = require('serialport')
 const Readline = require('@serialport/parser-readline')
 const port = new SerialPort('\\\\.\\COM4', { baudRate: 9600 })
+const mongoose = require("mongoose");
+
+// configuração mongoose
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/nodeArd").then(() =>{
+	console.log("mongodb conectado");
+}).cath( (err)=>{
+	console.log(err);
+});
 
 
 //app.use(express.static('./public'));
@@ -15,8 +24,6 @@ const io = require('socket.io')(http);
 const parser = new Readline()
 port.pipe(parser);
 var objeto = {'sala':'','tag':''};
-
-
 
 port.write('ROBOT POWER ON\n'); 
 
@@ -42,7 +49,6 @@ parser.on('data', (recebido_arduino) => {
 	});
 	
 });
-
 
 
 http.listen(3000,function(){
