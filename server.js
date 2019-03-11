@@ -5,20 +5,43 @@ const SerialPort = require('serialport')
 const Readline = require('@serialport/parser-readline')
 const port = new SerialPort('\\\\.\\COM4', { baudRate: 9600 })
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser');
+const admin = require('./app/routes/objeto');
+
+
+const path =require("path");
+app.use(express.static(path.join(__dirname,"public")));
+
+//Routes
+app.use('/admin',admin);
+//bory paser
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 // configuração mongoose
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/nodeArd").then(() =>{
 	console.log("mongodb conectado");
-}).cath( (err)=>{
-	console.log(err);
+});
+mongoose.connection.on('connected',function(){
+console.log('Conectado ao banco de dados.');
 });
 
+mongoose.connection.on('error', function(error){
+console.log('Erro na conexão'+error);
+});
 
-//app.use(express.static('./public'));
-app.get('/',function (req , res){
-	res.sendFile(__dirname+'/public/index.html');
-})
+mongoose.connection.on('disconnected', function(){
+console.log('Desconectado do banco de dados');
+});
+
+process.on('SIGINT',function(){
+mongoose.connection.close(function(){
+  console.log('Aplicação terminada, conexão fechada');
+  process.exit(0);
+});
+});
+
 
 const io = require('socket.io')(http);
 const parser = new Readline()

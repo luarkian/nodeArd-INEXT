@@ -1,9 +1,11 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const schema = mongoose.Schema;
 
-var schema = mongoose.Schema({
+const objeto = new schema ({
 	nome:{
 		type: String,
-		//required: true
+		required: true,
+		default:'Desconhecido'
 	},
 	tagRFID:{
 		type: String,
@@ -15,7 +17,8 @@ var schema = mongoose.Schema({
 	},
 	tombo:{
 		type: Number,
-		//required: true
+		required: true,
+		default:'Desconhecido'
 	},
 	sala:{
 		type: String,
@@ -23,4 +26,4 @@ var schema = mongoose.Schema({
 	}
 });
 
-mongoose.model('objetosSchema',schema);
+mongoose.model('objetosSchema',objeto);
