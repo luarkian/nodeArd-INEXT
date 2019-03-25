@@ -4,12 +4,60 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/style.css">
 	<!--<script src="/socket.io/socket.io.js"></script>-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>	
+		/*$.ajax({
+			url:"https://localhost:3000/objeto",
+			data: JSON.stringify({
+				"nome": nome,
+				"tagRFID": tagRFID,
+				"tombo": tombo,
+				"descricao": descricao,
+				"sala":sala
+			}),
+			type: "get",
+			contentType: "application/json"
+			success: function(data){
+				console.log(data)
+			},
+			error: function(xhr, status, err){
+				console.log(err)
+			}
+
+		})*/
+
+		function getObjetos(){
+			$.ajax({url:"http://localhost:3000/objetos"
+		}).done(function(data){
+			var output =  '<table>';
+				output += '<tr>';
+				output += '<td><b>'+'Nome'+'</b></td>';
+				output += '<td><b>'+'Tag RFID'+'</b></td>';
+				output += '<td><b>'+'Descricao'+'</b></td>';
+				output += '<td><b>'+'Tombo'+'</b></td>';
+				output += '<td><b>'+'Sala'+'</b></td>';
+				output += '</tr>';
+			$.each(data, function(key, data){
+				output += '<tr>';
+				output += '<td>'+data.nome+'</td>';
+				output += '<td>'+data.tagRFID+'</td>';
+				output += '<td>'+data.descricao+'</td>';
+				output += '<td>'+data.tombo+'</td>';
+				output += '<td>'+data.sala+'</td>';
+				output += '</tr>';
+			});
+			output += '</table>';
+			$('#objetos').html(output);
+		});
+	}
+	</script>
 </head>
-<body>
-	<h1>Servidor ok!</h1>
+<body onload="getObjetos()">
+	<h1>INEXT</h1>
 	 <ul id="messages"></ul>
 	<div id="msg"></div>
 	<!--<form action="">
@@ -39,5 +87,12 @@
 	 	});
 
 	</script>
+	
+<div id="objetos">
+	
+</div>
+<div>
+	<a href="/views/editar.html" class="btn btn-default">Cadastrar </a>
+</div>
 </body>
 

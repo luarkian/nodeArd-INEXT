@@ -4,21 +4,19 @@ const schema = mongoose.Schema;
 const objeto = new schema ({
 	nome:{
 		type: String,
-		required: true,
-		default:'Desconhecido'
+		required: true
 	},
 	tagRFID:{
 		type: String,
 		required: true
 	},
-	descriçao:{
+	descricao:{
 		type: String,
 		required: false
 	},
 	tombo:{
 		type: Number,
-		required: true,
-		default:'Desconhecido'
+		required: false
 	},
 	sala:{
 		type: String,
