@@ -7,8 +7,8 @@ const model = mongoose.model('objetosSchema');
 	api.lista = function(req,res){
 	
 		model.find()
-			.then(function(objetos){
-				res.json(objetos);
+			.then(function(objeto){
+				res.json(objeto);
 
 			}, function(error){
 				console.log(error);
@@ -28,19 +28,6 @@ const model = mongoose.model('objetosSchema');
 	    res.redirect('/');
   	};
 
-	// ############# TAGs ################
-	api.identificaTag = function(req, res){
-
-	};
-	api.buscaPorTag = function(req, res){
-
-	};
-	api.atualizaTag = function (req, res){
-
-	};
-	api.editaTag = function (req, res){
-
-	};
 	api.buscaPorTag = function(req, res){
 		model.findOne(req.params.tag)
     	.then(function(objeto){
@@ -52,34 +39,42 @@ const model = mongoose.model('objetosSchema');
 		model.findOne(req.params.tag).then(function(objeto){
       	if(!objeto){ //Objeto não encontrado
      		 var body = {'nome': 'Desconhecido',
-     		 			  'tagRFID':req.params.tag,
+     		 			  'tagRFID':req.params.tagRFID,
      		 			  'descricao':'Desconhecido',
      		 			  'tombo': null,
      		 			  'sala':req.params.sala
-     					}
+     					};
      		model.create(body);
      		res.json(body);
      	}else if(objeto.sala == req.params.sala){
      		 objeto.sala = 'Sem sala ou em trasinção';
-     		 model.findOneAndUpdate(objeto);
+     		 model.findOneAndUpdate(objeto.id ,objeto);
      		 res.json(objeto);
      		}
      	
    		 });
 	};
+	api.atualizar = function(req ,res){
+		model.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
+	    .then( (obj)=>{
+	      console.log(obj.id, req.body);
+	      //res.json(obj);
+	      res.redirect('/');
+	    }).catch( (error)=>{
+	      console.log(error);
+	      ressendStatus(500);
+	    });
+		
+	}
 
 	// ############# IDs ##############
-	api.identificaId = function(req, res){
 
-	};
+	api.buscaId = function (req, res){
+		model.findById(req.params.id, function(err, obj){
+				res.render('editar2',{ objeto: obj});	
+		});
 
-	api.atualizaId = function (req, res){
-
-	};
-
-	api.editaId = function (req, res){
-
-	};
+  };
 
 	api.buscaPorId = function(req, res){
 		model.findById(req.params.id)

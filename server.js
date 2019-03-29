@@ -6,9 +6,12 @@ const http = require('http').Server(app);
 //const port = new SerialPort('\\\\.\\COM4', { baudRate: 9600 })
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
+var ejs = require('ejs')
 //bory paser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+
+app.set('view engine', 'ejs')
 
 const router = require('./app/routes/objeto');
 //##
@@ -18,10 +21,10 @@ const model = mongoose.model('objetosSchema');
 require('./config/database')('localhost/nodeard');
 
 const path =require("path");
-app.use(express.static(path.join(__dirname,"public")));
+//app.use(express.static(path.join(__dirname,"public")));
 
 //Routes
-app.use('/',router);
+app.use(router);
 
 
 /*

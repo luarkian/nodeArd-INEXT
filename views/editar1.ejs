@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cadastrar Objeto</title>
+</head>
+	<body>
+		<div>
+			<form  action="/cadastrar" method="post">
+				<div>
+					<label>Nome: </label>
+					<input class="" name="nome" type="text" value="<%= objeto.nome %>">
+				</div>	
+				<div>
+					<label>TagRFID: </label>
+					<input class="" name="tagRFID" type="text" value="<%= objeto.tagRFID%>" >
+				</div>
+				<div>
+					<label>Tombo: </label>
+					<input class="" name="tombo" type="number" value="<%= objeto.tombo%>">
+				</div>
+				<div>
+					<label>Descrição</label>
+					<input class="" name="descricao" type="text" value="<%= objeto.descricao %>">
+				</div>	
+				<div>
+					<label>Sala: </label>
+					<input class="" name="sala" type="text" value="<%= objeto.sala %>">
+				</div>	
+				<div>
+					<input type="submit" value="Salvar">
+					<a href="/">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

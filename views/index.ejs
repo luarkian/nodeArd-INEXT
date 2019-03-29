@@ -1,0 +1,43 @@
+<html lang="pt-br">
+<head>
+	<base href="/">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<!--<script src="/socket.io/socket.io.js"></script>-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+</head>
+<body>
+	<h1>INEXT</h1>
+</div>
+<div>
+	<table>
+		<tbory>
+			<tr>
+				<td>Nome</td>
+				<td>TagRFID</td>
+				<td>Descricao</td>	
+				<td>Tombo</td>
+				<td>Sala</td>
+				<td></td>
+			</tr>	
+		</tbory>
+		<% for(var i =0; i < objeto.length; i++){ %>
+			<tr>
+				<td><%= objeto[i].nome %></td>
+				<td><%= objeto[i].tagRFID %></td>
+				<td><%= objeto[i].descricao %></td>
+				<td><%= objeto[i].tombo %></td>
+				<td><%= objeto[i].sala %></td>
+				<td><a href="/editar/<%=objeto[i]._id %>">Editar</a></td>
+			</tr>
+		
+	<%	}%>	
+	</table>
+	<p>TESTANDO 4</p>
+	<a href="cadastra" class="btn btn-default">Cadastrar Manual</a>
+</div>
+</body>
+
