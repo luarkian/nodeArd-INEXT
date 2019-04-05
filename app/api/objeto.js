@@ -36,6 +36,37 @@ const model = mongoose.model('objetosSchema');
    		 });
 	};
 	api.verificar = function(req, res){
+		var bory = req.body;
+
+		model.findOne({tagRFID:req.params.tagRFID}, (err, obj) =>{
+			console.log(obj);
+			if(obj == null){
+				obj = {
+					nome: 'Desconhecido',
+					tagRFID:req.body.tagRFID,
+					sala: req.body.sala,
+					descricao: 'Desconhecido',
+					tombo: 0
+				}
+				model.create(obj);	
+			}
+			else if(obj.sala == bory.sala){
+				obj.sala = 'tansicao';
+				model.findByIdAndUpdate({_id:obj.id}, obj.bory, {new:true}).catch((err)=>{
+					console.log(err);
+				});
+				console.log(" #1");
+			}
+			else if(obj.sala != bory.sala){
+				obj.sala = bory.sala;
+				model.findByIdAndUpdate({_id:obj.id}, obj.bory, {new:true}).catch((err)=>{
+					console.log(err);
+				});
+				console.log(" #2");
+			}
+
+		});
+		/*
 		model.findOne(req.params.tag).then(function(objeto){
       	if(!objeto){ //Objeto não encontrado
      		 var body = {'nome': 'Desconhecido',
@@ -52,7 +83,8 @@ const model = mongoose.model('objetosSchema');
      		 res.json(objeto);
      		}
      	
-   		 });
+   		 }); */
+   		 res.send("ok");
 	};
 	api.atualizar = function(req ,res){
 		model.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
@@ -84,6 +116,17 @@ const model = mongoose.model('objetosSchema');
    		 });
 	};
 
-	
+	api.removePorId = function(req,res){
+		model.remove({'_id':req.params.id})
+	    .then(function(){
+	      
+	      res.redirect('/');
+	    },function(error){
+	      console.log(error);
+	      res.sendStatus(500);
+   		res.redirect('/');
+   		 });
+		
+	};
 
 	module.exports = api;

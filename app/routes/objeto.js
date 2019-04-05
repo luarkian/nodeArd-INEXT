@@ -32,6 +32,7 @@ router.get('/editar/:id',api.buscaId)
 
 router.post('/editar/:id', api.atualizar)
 
+router.get('/remove/:id',api.removePorId)
 
 //router('/nodeArd/rfid/:tag', api.identificaTag)
 //.get(api.buscaPorTag)
