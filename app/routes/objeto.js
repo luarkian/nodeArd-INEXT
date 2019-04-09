@@ -20,7 +20,7 @@ router.get('/',function (req , res){
 	
 })
 router.get('/cadastra',function(req, res){
-	res.render('editar1')
+	res.render('cadastra')
 })
 router.post('/cadastrar', api.adiciona)
 

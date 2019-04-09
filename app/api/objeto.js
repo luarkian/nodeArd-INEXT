@@ -1,8 +1,21 @@
 const mongoose = require('mongoose');
 require('./../models/objeto');
 const model = mongoose.model('objetosSchema');
-
-	var api = {};
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);	
+const io = require('socket.io')(http);
+var api = {};	
+	
+	io.on('connection', (socket)=>{
+		model.find()
+			.then(function(objeto){
+				io.emit('objetos' ,objeto);
+			}, function(error){
+				console.log(error);
+			});
+	});
+	
 	
 	api.lista = function(req,res){
 	
@@ -38,7 +51,7 @@ const model = mongoose.model('objetosSchema');
 	api.verificar = function(req, res){
 		var bory = req.body;
 
-		model.findOne({tagRFID:req.params.tagRFID}, (err, obj) =>{
+		model.findOne({tagRFID:req.body.tagRFID}, (err, obj) =>{
 			console.log(obj);
 			if(obj == null){
 				obj = {
@@ -52,14 +65,14 @@ const model = mongoose.model('objetosSchema');
 			}
 			else if(obj.sala == bory.sala){
 				obj.sala = 'tansicao';
-				model.findByIdAndUpdate({_id:obj.id}, obj.bory, {new:true}).catch((err)=>{
+				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala}, {new:true}).catch((err)=>{
 					console.log(err);
 				});
-				console.log(" #1");
+				console.log(" #1 ");
 			}
 			else if(obj.sala != bory.sala){
 				obj.sala = bory.sala;
-				model.findByIdAndUpdate({_id:obj.id}, obj.bory, {new:true}).catch((err)=>{
+				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala}, {new:true}).catch((err)=>{
 					console.log(err);
 				});
 				console.log(" #2");
