@@ -1,7 +1,8 @@
+
 <html lang="pt-br">
 <head>
-	<base href="/">
 	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="2">
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -9,18 +10,52 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 </head>
+<script type="text/javascript">
+	var socket = io();
+	var output = '<h2>Lista de Objetos</h2>';
+	
+	socket.on("objetos",function(data1){
+			/*	output +=  '<table>';
+				output += '<tr>';
+				output += '<td><b>'+'Nome'+'</b></td>';
+				output += '<td><b>'+'Tag RFID'+'</b></td>';
+				output += '<td><b>'+'Descricao'+'</b></td>';
+				output += '<td><b>'+'Tombo'+'</b></td>';
+				output += '<td><b>'+'Sala'+'</b></td>';
+				output += '<td></b></td>';
+				output += '</tr>';
+			$.each(data1, function(key, dat){
+				dat =data1;
+				output += '<tr>';
+				output += '<td>'+dat.nome+'</td>';
+				output += '<td>'+dat.tagRFID+'</td>';
+				output += '<td>'+dat.descricao+'</td>';
+				output += '<td>'+dat.tombo+'</td>';
+				output += '<td>'+dat.sala+'</td>';
+				output += '<td><a href="/editar/'+dat._id+'">Editar</a></td>';
+				output += '</tr>';
+				console.log(dat);
+			});
+			output += '</table>';
+			$('#objetos').html(output);
+			*/
+			console.log(data1);
+		});
+</script>
 <body>
-	<h1>INEXT</h1>
+	
 </div>
-<div>
+<div class="container">
+	<h1>INEXT</h1>
 	<table>
 		<tbory>
 			<tr>
-				<td>Nome</td>
-				<td>TagRFID</td>
-				<td>Descricao</td>	
-				<td>Tombo</td>
-				<td>Sala</td>
+				<td><b>Nome</b></td>
+				<td><b>TagRFID</b></td>
+				<td><b>Descricao</b></td>	
+				<td><b>Tombo</b></td>
+				<td><b>Sala </b></td>
+				<td></td>
 				<td></td>
 			</tr>	
 		</tbory>
@@ -39,5 +74,8 @@
 	</table>
 	<a href="cadastra" class="btn btn-default">Cadastrar Manual</a>
 </div>
+<div id='objetos'>
+</div>
+	
 </body>
 

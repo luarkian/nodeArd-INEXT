@@ -7,22 +7,30 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 var api = {};	
 	
-	io.on('connection', (socket)=>{
-		model.find()
-			.then(function(objeto){
-				io.emit('objetos' ,objeto);
-			}, function(error){
-				console.log(error);
-			});
-	});
+	
+		
+	/*	io.emit('objetos' ,(obj)=>{
+			model.find()
+				.then(function(objeto){
+					obj = objeto;
+					res.json(obj);
+					})
+				});
+	*/
 	
 	
 	api.lista = function(req,res){
-	
+		/*model.watch().on("change", objetos =>{
+			io.emit("objetos",objetos=>{
+				objetos = 'TESTE';
+			});
+		});*/
 		model.find()
 			.then(function(objeto){
 				res.json(objeto);
-
+				//io.emit('objetos' ,(obj)=>{
+				//	obj = objeto;
+				//});
 			}, function(error){
 				console.log(error);
 				res.status(500).json(error);
@@ -52,7 +60,7 @@ var api = {};
 		var bory = req.body;
 
 		model.findOne({tagRFID:req.body.tagRFID}, (err, obj) =>{
-			console.log(obj);
+			//console.log(obj);
 			if(obj == null){
 				obj = {
 					nome: 'Desconhecido',
@@ -64,7 +72,7 @@ var api = {};
 				model.create(obj);	
 			}
 			else if(obj.sala == bory.sala){
-				obj.sala = 'tansicao';
+				obj.sala = 'Em Tansição';
 				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala}, {new:true}).catch((err)=>{
 					console.log(err);
 				});

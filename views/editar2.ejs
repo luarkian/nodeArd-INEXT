@@ -1,37 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	
 	<title>Editar objeto</title>
-</head>
-	<body>
-		<div>
+	
+		<div class="container">
+			<h1>INEXT</h1>
 			<h3>Editar objeto</h3>
-			<form  action="/editar/<%=objeto._id %>" method="POST">	
-				<div>
+			<form class="form" action="/editar/<%=objeto._id %>" method="POST">	
+				<div class="form-group">
 					<label>Nome: </label>
 					<input class="" name="nome" type="text" value="<%= objeto.nome %>">
 				</div>	
-				<div>
+				<div class="form-group">
 					<label>TagRFID: </label>
 					<input class="" name="tagRFID" type="text" value="<%= objeto.tagRFID%>" >
 				</div>
-				<div>
+				<div class="form-group">
 					<label>Tombo: </label>
 					<input class="" name="tombo" type="number" value="<%= objeto.tombo%>">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>Descrição</label>
 					<input class="" name="descricao" type="text" value="<%= objeto.descricao %>">
 				</div>	
-				<div>
+				<div class="form-group">
 					<label>Sala: </label>
 					<input class="" name="sala" type="text" value="<%= objeto.sala %>">
 				</div>	
-				<div>
+				<div class="form-group">
 					<input type="submit" value="Salvar">
 					<button href="/">Cancelar</button>
 				</div>
 			</form>
 		</div>
-	</body>
-</html>

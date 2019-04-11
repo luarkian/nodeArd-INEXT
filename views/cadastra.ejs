@@ -1,37 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	
+	
 	<title>Cadastrar Objeto</title>
-</head>
-	<body>
-		<div>
-			<form  action="/cadastrar" method="post">
-				<div>
+		<div class="container">
+			<h1>INEXT</h1>
+			<h3>Cadastrar Objeto Manual</h3>
+			<form class="form" action="/cadastrar" method="post">
+				<div class="form-group">
 					<label>Nome: </label>
 					<input class="" name="nome" type="text" >
 				</div>	
-				<div>
+				<div class="form-group">
 					<label>TagRFID: </label>
 					<input class="" name="tagRFID" type="text"  >
 				</div>
-				<div>
+				<div class="form-group">
 					<label>Tombo: </label>
 					<input class="" name="tombo" type="number" >
 				</div>
-				<div>
+				<div class="form-group">
 			
 					<label>Descrição</label>
 					<input class="" name="descricao" type="text" >
 				</div>	
-				<div>
+				<div class="form-group">
 					<label>Sala: </label>
 					<input class="" name="sala" type="text" >
 				</div>	
-				<div>
+				<div class="form-group">
 					<input type="submit" value="Salvar">
 					<a href="/">Cancelar</a>
 				</div>
 			</form>
 		</div>
-	</body>
-</html>

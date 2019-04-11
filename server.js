@@ -6,7 +6,12 @@ const http = require('http').Server(app);
 //const port = new SerialPort('\\\\.\\COM4', { baudRate: 9600 })
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
-var ejs = require('ejs')
+var ejs = require('ejs');
+const io = require('socket.io')(http);
+
+require('./app/models/objeto');
+const modelObj = mongoose.model('objetosSchema');
+
 //bory paser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -26,7 +31,9 @@ const path =require("path");
 //Routes
 app.use(router);
 
-
+/*io.on('connection', (socket)=>{
+		console.log('new connection', socket.id);
+});*/
 /*
 const io = require('socket.io')(http);
 const parser = new Readline()
@@ -58,7 +65,7 @@ parser.on('data', (recebido_arduino) => {
 	//teste(objeto);
 	
 }); */
-
+app.use(express.static(__dirname + '/public'));
 http.listen(3000,function(){
 	console.log('Servidor Iniciado.');
 });

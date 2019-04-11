@@ -1,14 +1,14 @@
 module.exports = function(uri){
   var mongoose = require('mongoose');
 
-  mongoose.connect('mongodb://localhost/nodeard', { useNewUrlParser: true });
+  mongoose.connect('mongodb://localhost/nodeard', { useNewUrlParser: true});
 
   mongoose.connection.on('connected',function(){
     console.log('Conectado ao banco de dados.');
   });
 
   mongoose.connection.on('error', function(error){
-    console.log('Erro na conexão'+error);
+    console.log('Erro na conexão '+error);
   });
 
   mongoose.connection.on('disconnected', function(){
