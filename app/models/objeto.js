@@ -21,6 +21,10 @@ const objeto = new schema ({
 	sala:{
 		type: String,
 		required: true
+	},
+	restrincao:{
+		type:String
+		required:false
 	}
 });
 
