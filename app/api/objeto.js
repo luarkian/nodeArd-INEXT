@@ -83,7 +83,7 @@ var api = {};
 						obj.alerta = 0;
 					}
 				}
-				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao}, {new:true}).catch((err)=>{
+				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao, alerta: obj.alerta}, {new:true}).catch((err)=>{
 					console.log(err);
 				});
 				console.log(" #1 ");
@@ -98,7 +98,7 @@ var api = {};
 						obj.alerta = 0;
 					}
 				}
-				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao}, {new:true}).catch((err)=>{
+				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao, alerta: obj.alerta}, {new:true}).catch((err)=>{
 					console.log(err);
 				});
 				console.log(" #2");
