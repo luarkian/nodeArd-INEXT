@@ -3,9 +3,21 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	
 	<title>Editar objeto</title>
-	
+	<div>
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="/">INEXT</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="/">Home</a></li>
+		      <li><a href="cadastra">Cadastrar Objeto Manual</a>
+		    </ul>	
+		  </div>
+		</nav>
+	</div>
 		<div class="container">
-			<h1>INEXT</h1>
+			
 			<h3>Editar objeto</h3>
 			<form class="form" action="/editar/<%=objeto._id %>" method="POST">	
 				<div class="form-group">
@@ -27,10 +39,19 @@
 				<div class="form-group">
 					<label>Sala: </label>
 					<input class="" name="sala" type="text" value="<%= objeto.sala %>">
-				</div>	
+				</div>
 				<div class="form-group">
-					<input type="submit" value="Salvar">
-					<button href="/">Cancelar</button>
+					<label>Restrinção: </label>
+					<input class="" name="restrincao" type="text" value="<%= objeto.restrincao %>">
+				</div>
+				<div class="form-group" id="inv">
+					<label>Restrinção: </label>
+					<input type="number" name="alerta" min="0" max="1" value="<%= objeto.alerta %>" />
+		
+				</div>		
+				<div class="form-group">
+					<input class="btn btn-success" type="submit" value="Salvar">
+					<button class="btn btn-warning" href="/">Cancelar</button>
 				</div>
 			</form>
 		</div>

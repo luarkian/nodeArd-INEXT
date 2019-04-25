@@ -43,10 +43,20 @@
 		});
 </script>
 <body>
-	
-</div>
+<div>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">INEXT</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="/">Home</a></li>
+	      <li><a href="cadastra">Cadastrar Objeto Manual</a>
+	    </ul>	
+	  </div>
+	</nav>
+</div>	
 <div class="container">
-	<h1>INEXT</h1>
 	<table>
 		<tbory>
 			<tr>
@@ -54,7 +64,8 @@
 				<td><b>TagRFID</b></td>
 				<td><b>Descricao</b></td>	
 				<td><b>Tombo</b></td>
-				<td><b>Sala </b></td>
+				<td><b>Localização </b></td>
+				<td><b>Restrinção </b></td>
 				<td></td>
 				<td></td>
 			</tr>	
@@ -66,15 +77,41 @@
 				<td><%= objeto[i].descricao %></td>
 				<td><%= objeto[i].tombo %></td>
 				<td><%= objeto[i].sala %></td>
+				<td><%= objeto[i].restrincao %></td>
 				<td><a href="/editar/<%=objeto[i]._id %>">Editar</a></td>
 				<td><a href="/remove/<%=objeto[i]._id %>">Remover</a></td>
 			</tr>
 		
 	<%	}%>	
 	</table>
-	<a href="cadastra" class="btn btn-default">Cadastrar Manual</a>
 </div>
-<div id='objetos'>
+<div class="container">
+	<h3>Objetos com restrinções violadas:</h3>
+	<table>
+		<tbory>
+			<tr>
+				<td><b>Nome</b></td>
+				<td><b>TagRFID</b></td>
+				<td><b>Descricao</b></td>	
+				<td><b>Tombo</b></td>
+				<td><b>Localização </b></td>
+				<td><b>Restrinção </b></td>
+			</tr>	
+		</tbory>
+		<% 
+			for(var i =0; i < objeto.length; i++){ 
+				if(objeto[i].alerta == 1){	%>
+				<tr style="background-color:#fb845c ">
+					<td><%= objeto[i].nome %></td>
+					<td><%= objeto[i].tagRFID %></td>
+					<td><%= objeto[i].descricao %></td>
+					<td><%= objeto[i].tombo %></td>
+					<td><%= objeto[i].sala %></td>
+					<td><%= objeto[i].restrincao %></td>
+				</tr>
+		
+	<%	}}%>	
+	</table>
 </div>
 	
 </body>

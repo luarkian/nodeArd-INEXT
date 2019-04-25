@@ -67,20 +67,38 @@ var api = {};
 					tagRFID:req.body.tagRFID,
 					sala: req.body.sala,
 					descricao: 'Desconhecido',
-					tombo: 0
+					tombo: 0,
+					restrincao:'',
+					alerta:false
 				}
 				model.create(obj);	
 			}
 			else if(obj.sala == bory.sala){
 				obj.sala = 'Em Tansição';
-				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala}, {new:true}).catch((err)=>{
+				if(obj.restrincao != ''){
+					if(obj.restrincao != obj.sala){
+						obj.alerta = 1;
+					}
+					else if(obj.restrincao == obj.sala){
+						obj.alerta = 0;
+					}
+				}
+				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao}, {new:true}).catch((err)=>{
 					console.log(err);
 				});
 				console.log(" #1 ");
 			}
 			else if(obj.sala != bory.sala){
 				obj.sala = bory.sala;
-				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala}, {new:true}).catch((err)=>{
+				if(obj.restrincao != ''){
+					if(obj.restrincao != obj.sala){
+						obj.alerta = 1;
+					}
+					else if(obj.restrincao == obj.sala){
+						obj.alerta = 0;
+					}
+				}
+				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao}, {new:true}).catch((err)=>{
 					console.log(err);
 				});
 				console.log(" #2");
@@ -108,9 +126,30 @@ var api = {};
    		 res.send("ok");
 	};
 	api.atualizar = function(req ,res){
+		obj = {};
+		model.findById(req.params.id, function(err, ob){
+			obj = ob;
+			
+		});
+		
+		if(req.body.restrincao != ''){
+
+			if(req.body.restrincao != req.body.sala){
+				req.body.alerta = 1;
+				model.findByIdAndUpdate({_id: req.params.id}, {alerta:1}, {new: true});
+			}
+			else if(req.body.restrincao == req.body.sala){
+				req.body.alerta = 0;
+				model.findByIdAndUpdate({_id: req.params.id}, {alerta:0}, {new: true});
+			}
+		}
+		else if(req.body.restrincao == ''){
+			req.body.alerta = 0;
+			model.findByIdAndUpdate({_id: req.params.id}, {alerta:0}, {new: true});
+		}
 		model.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
 	    .then( (obj)=>{
-	      console.log(obj.id, req.body);
+	      //console.log(obj.id, req.body);
 	      //res.json(obj);
 	      res.redirect('/');
 	    }).catch( (error)=>{

@@ -23,8 +23,13 @@ const objeto = new schema ({
 		required: true
 	},
 	restrincao:{
-		type:String
+		type:String,
 		required:false
+	},
+	alerta:{
+		type: Number,
+		required:true,
+		default:0
 	}
 });
 

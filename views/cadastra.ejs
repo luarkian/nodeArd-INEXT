@@ -4,8 +4,20 @@
 	
 	
 	<title>Cadastrar Objeto</title>
+	<div>
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="/">INEXT</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="/">Home</a></li>
+		      <li><a href="cadastra">Cadastrar Objeto Manual</a>
+		    </ul>	
+		  </div>
+		</nav>	
 		<div class="container">
-			<h1>INEXT</h1>
+			
 			<h3>Cadastrar Objeto Manual</h3>
 			<form class="form" action="/cadastrar" method="post">
 				<div class="form-group">
@@ -30,8 +42,8 @@
 					<input class="" name="sala" type="text" >
 				</div>	
 				<div class="form-group">
-					<input type="submit" value="Salvar">
-					<a href="/">Cancelar</a>
+					<input class="btn btn-success" type="submit" value="Salvar">
+					<a class="btn btn-warning" href="/">Cancelar</a>
 				</div>
 			</form>
 		</div>
