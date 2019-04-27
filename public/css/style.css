@@ -17,3 +17,44 @@ tr:nth-child(even) {
   background-color:yellow;
   visibility:hidden;
 }
+.tableUsuario {
+  border: 1px;
+  border-color: #000;
+  font-family: sans-serif;
+  position: relative;
+  padding: 10px;
+  transform: translate(0%, 10%);
+}
+
+.tableUsuario th{
+  padding: 5px;
+  color: #000;
+  align-content: center;
+  background-color: rgba(34,121,158,0.75);
+}
+
+.tableUsuario td{
+  padding: 5px;
+  text-align: center;
+  
+}
+.cadastroUsuario{
+  width: 400px;
+  height: auto;
+  left: 25%;
+  position: relative;
+  transform: translate(-50%, 0%);
+  box-sizing: border-box;
+  padding: 20px 30px;
+}
+
+.cadastroUsuario h1{
+  padding-top: 5%;
+  padding-left: 10%;
+  padding-bottom: 10px;
+}
+.cadastroUsuario p{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}

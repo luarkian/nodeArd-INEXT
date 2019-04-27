@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 
 require('./../models/objeto');
 const modelObjeto = mongoose.model('objetosSchema');
-
 //app.get('/');
 
 router.get('/',function (req , res){
@@ -15,6 +14,7 @@ router.get('/',function (req , res){
 			if(err){
 				throw err;
 			}
+			
 			res.render('index', {title:'Express', objeto: objetos});
 			});
 	

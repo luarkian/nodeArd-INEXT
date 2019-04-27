@@ -1,9 +1,10 @@
+
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	
 	
-	<title>INEXT - Cadastrar Objeto</title>
+	<title>INEXT - Quem Notificar</title>
 	<div>
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
@@ -17,34 +18,45 @@
 		    </ul>	
 		  </div>
 		</nav>	
-		<div class="container">
-			
-			<h3>Cadastrar Objeto Manual</h3>
-			<form class="form" action="/cadastrar" method="post">
+		<div class=" col-md-8">
+			<div class="cadastroUsuario">
+			<h3>Cadastrar Adm</h3>
+			<form class="form" action="/admin_dados" method="post">
 				<div class="form-group">
 					<label>Nome: </label>
-					<input class="" name="nome" type="text" >
+					<input class="" name="nome" type="text" " >
 				</div>	
 				<div class="form-group">
-					<label>TagRFID: </label>
-					<input class="" name="tagRFID" type="text"  >
-				</div>
-				<div class="form-group">
-					<label>Tombo: </label>
-					<input class="" name="tombo" type="number" >
-				</div>
-				<div class="form-group">
-			
-					<label>Descrição</label>
-					<input class="" name="descricao" type="text" >
-				</div>	
-				<div class="form-group">
-					<label>Sala: </label>
-					<input class="" name="sala" type="text" >
+					<label>email: </label>
+					<input class="" name="email" type="text" >
 				</div>	
 				<div class="form-group">
 					<input class="btn btn-success" type="submit" value="Salvar">
 					<a class="btn btn-warning" href="/">Cancelar</a>
 				</div>
 			</form>
+		</div>
+		</div>
+		<div class="col-md-4 tableUsuario">
+		<h3>Tabela Adm</h3>
+		<table >
+		<tbory>
+			<tr>
+				<td><b>Nome</b></td>
+				<td><b>Email</b></td>
+				<td></td>
+				<td></td>
+			</tr>	
+		</tbory>
+		<% for(var i =0; i < admin.length; i++){ %>
+			<tr>
+				<td><%= admin[i].nome %></td>
+				<td><%= admin[i].email %></td>
+				<td><a href="/admin_edit/<%=admin[i]._id %>">Editar</a></td>
+				<td><a href="/removeAdm/<%=admin[i]._id %>">Remover</a></td>
+			</tr>
+		
+	<%	}%>	
+		</table>
+		
 		</div>
