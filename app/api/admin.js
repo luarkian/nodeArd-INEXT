@@ -14,8 +14,21 @@ api.lista = function(req, res){
 };
 api.criar = function(req, res){	
 	var body = req.body;
-	    model.create(body);
-	    res.redirect('/admin');
+	    
+	model.findOne(body.email, (user)=>{
+		console.log(user)
+		if(user == null){
+			model.create(body);
+	    	res.redirect('/admin');	
+		}
+		else{
+			model.find(null, function(err,adm){
+				res.render('admin', {title:'adms1', exist:1, admin:adm });
+			});
+			
+		}
+	});
+	    
 };
 
 api.buscarPorId= function(req,res){

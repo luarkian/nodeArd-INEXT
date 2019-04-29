@@ -17,7 +17,14 @@
 		      <li><a href="admin">Quem Notificar</a>
 		    </ul>	
 		  </div>
-		</nav>	
+		</nav>
+		<div>
+			<% if('adms1' == title){ %>
+				<span class = "form-control alert-danger" >
+							Email já está sendo utilizado!
+				</span>
+			<% } %>	
+		</div>
 		<div class=" col-md-8">
 			<div class="cadastroUsuario">
 			<h3>Cadastrar Adm</h3>
@@ -28,7 +35,7 @@
 				</div>	
 				<div class="form-group">
 					<label>email: </label>
-					<input class="" name="email" type="text" >
+					<input class="" name="email" type="email" >
 				</div>	
 				<div class="form-group">
 					<input class="btn btn-success" type="submit" value="Salvar">
