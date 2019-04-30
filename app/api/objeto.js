@@ -5,6 +5,8 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);	
 const io = require('socket.io')(http);
+const fs = require('fs');
+const moment = require('moment');
 var api = {};	
 	
 	
@@ -39,9 +41,12 @@ var api = {};
 	api.adiciona = function(req,res){
 		var body = req.body;
 	    model.create(body)
-	    .then(function(objeto){
-	      console.log('Objeto cadastrado '+body.nome)
-	      res.json(objeto);
+	    .then(function(obj){
+	      console.log('Objeto cadastrado '+body.nome);
+	      fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto criado, tagRFID: '+obj.tagRFID+' nome: '+obj.nome+' time:'+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+				    console.log('Arquivo salvo!'+date);
+				});
+	      res.json(obj);
 	    },function(error){
 	     // console.log(error);
 	      res.sendStatus(500);
@@ -71,6 +76,10 @@ var api = {};
 					restrincao:'',
 					alerta:false
 				}
+				var date = moment().format('YYYY-MM-DD');
+				fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto criado, tagRFID: '+obj.tagRFID+' time:'+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+				    console.log('Arquivo salvo!'+date);
+				});
 				model.create(obj);	
 			}
 			else if(obj.sala == bory.sala){
@@ -86,7 +95,10 @@ var api = {};
 				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao, alerta: obj.alerta}, {new:true}).catch((err)=>{
 					console.log(err);
 				});
-				console.log(" #1 ");
+				var date = moment().format('YYYY-MM-DD');
+				fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+obj.tagRFID+' id: '+obj.id+'saiu da sala: '+bory.sala+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+					console.log('Arquivo salvo!'+date);
+				});
 			}
 			else if(obj.sala != bory.sala){
 				obj.sala = bory.sala;
@@ -101,7 +113,10 @@ var api = {};
 				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao, alerta: obj.alerta}, {new:true}).catch((err)=>{
 					console.log(err);
 				});
-				console.log(" #2");
+				var date = moment().format('YYYY-MM-DD');
+				fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+obj.tagRFID+' id: '+obj.id+'entrou na sala: '+bory.sala+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+					console.log('Arquivo salvo!'+date);
+				});
 			}
 
 		});
@@ -147,6 +162,10 @@ var api = {};
 			req.body.alerta = 0;
 			model.findByIdAndUpdate({_id: req.params.id}, {alerta:0}, {new: true});
 		}
+		var date = moment().format('YYYY-MM-DD');
+		fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+req.body.tagRFID+' id: '+req.params.id+' foi modificado, time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+			console.log('Arquivo salvo!');
+		});
 		model.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
 	    .then( (obj)=>{
 	      //console.log(obj.id, req.body);
@@ -179,7 +198,9 @@ var api = {};
 	api.removePorId = function(req,res){
 		model.remove({'_id':req.params.id})
 	    .then(function(){
-	      
+	      fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto id: '+req.params.id+' foi excluido, time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+			console.log('Arquivo salvo!');
+			});
 	      res.redirect('/');
 	    },function(error){
 	      console.log(error);
