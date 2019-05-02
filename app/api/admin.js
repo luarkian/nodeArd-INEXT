@@ -60,19 +60,14 @@ api.atualizaDados = function (req, res ){
 	res.redirect('/admin');
 };
 api.removePorId = function(req,res){
-	model.remove({'_id':req.params.id})
-	    .then(function(){
+	model.remove({'_id':req.params.id}, function(user){
 	      var date = moment().format('YYYY-MM-DD');
-		  fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','User: id: '+req.params.id+' removido'+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+		  fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','User: id: '+req.params.id+', email: '+user.email+' removido'+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
 			    
 			console.log('Arquivo salvo!'+date);
 		});	
 	      res.redirect('/admin');
-	    },function(error){
-	      console.log(error);
-	      res.sendStatus(500);
-   		res.redirect('/admin');
-   		 });
+	    });
 };
 
 api.sendEmail = function (req, res ){

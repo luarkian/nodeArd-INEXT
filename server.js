@@ -70,6 +70,6 @@ parser.on('data', (recebido_arduino) => {
 	
 }); */
 app.use(express.static(__dirname + '/public'));
-http.listen(3000,function(){
+	http.listen(3000,function(){
 	console.log('Servidor Iniciado.');
 });

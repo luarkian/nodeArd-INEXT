@@ -1,213 +1,278 @@
 const mongoose = require('mongoose');
 require('./../models/objeto');
+require('./../models/admin');
 const model = mongoose.model('objetosSchema');
+const modelAdm = mongoose.model('adminSchema');
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);	
 const io = require('socket.io')(http);
 const fs = require('fs');
 const moment = require('moment');
+const nodemailer = require('nodemailer');
 var api = {};	
 	
-	
-		
-	/*	io.emit('objetos' ,(obj)=>{
-			model.find()
-				.then(function(objeto){
-					obj = objeto;
-					res.json(obj);
-					})
-				});
-	*/
-	
-	
-	api.lista = function(req,res){
-		/*model.watch().on("change", objetos =>{
-			io.emit("objetos",objetos=>{
-				objetos = 'TESTE';
-			});
-		});*/
-		model.find()
-			.then(function(objeto){
-				res.json(objeto);
-				//io.emit('objetos' ,(obj)=>{
-				//	obj = objeto;
-				//});
-			}, function(error){
-				console.log(error);
-				res.status(500).json(error);
-			});
-	};
-	api.adiciona = function(req,res){
-		var body = req.body;
-	    model.create(body)
-	    .then(function(obj){
-	      console.log('Objeto cadastrado '+body.nome);
-	      fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto criado, tagRFID: '+obj.tagRFID+' nome: '+obj.nome+' time:'+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
-				    console.log('Arquivo salvo!'+date);
-				});
-	      res.json(obj);
-	    },function(error){
-	     // console.log(error);
-	      res.sendStatus(500);
-	    });
-	    res.redirect('/');
-  	};
+var transporter = nodemailer.createTransport({
+  service: 'Zoho',
+        auth: {
+            user: 'cruiserweights@zoho.com', // Your email address
+            pass: 'PAssword123!@#' // Your password
+        }
+});
 
-	api.buscaPorTag = function(req, res){
-		model.findOne(req.params.tag)
-    	.then(function(objeto){
-      	if(!objeto)throw new Error('Objeto não encontrado');
-     		 res.json(objeto);
-   		 });
-	};
-	api.verificar = function(req, res){
-		var bory = req.body;
 
-		model.findOne({tagRFID:req.body.tagRFID}, (err, obj) =>{
-			//console.log(obj);
-			if(obj == null){
-				obj = {
-					nome: 'Desconhecido',
-					tagRFID:req.body.tagRFID,
-					sala: req.body.sala,
-					descricao: 'Desconhecido',
-					tombo: 0,
-					restrincao:'',
-					alerta:false
-				}
-				var date = moment().format('YYYY-MM-DD');
-				fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto criado, tagRFID: '+obj.tagRFID+' time:'+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
-				    console.log('Arquivo salvo!'+date);
-				});
-				model.create(obj);	
-			}
-			else if(obj.sala == bory.sala){
-				obj.sala = 'Em Tansição';
-				if(obj.restrincao != ''){
-					if(obj.restrincao != obj.sala){
-						obj.alerta = 1;
-					}
-					else if(obj.restrincao == obj.sala){
-						obj.alerta = 0;
-					}
-				}
-				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao, alerta: obj.alerta}, {new:true}).catch((err)=>{
-					console.log(err);
-				});
-				var date = moment().format('YYYY-MM-DD');
-				fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+obj.tagRFID+' id: '+obj.id+'saiu da sala: '+bory.sala+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
-					console.log('Arquivo salvo!'+date);
-				});
-			}
-			else if(obj.sala != bory.sala){
-				obj.sala = bory.sala;
-				if(obj.restrincao != ''){
-					if(obj.restrincao != obj.sala){
-						obj.alerta = 1;
-					}
-					else if(obj.restrincao == obj.sala){
-						obj.alerta = 0;
-					}
-				}
-				model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao, alerta: obj.alerta}, {new:true}).catch((err)=>{
-					console.log(err);
-				});
-				var date = moment().format('YYYY-MM-DD');
-				fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+obj.tagRFID+' id: '+obj.id+'entrou na sala: '+bory.sala+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
-					console.log('Arquivo salvo!'+date);
-				});
-			}
-
+api.lista = function(req,res){
+	/*model.watch().on("change", objetos =>{
+		io.emit("objetos",objetos=>{
+			objetos = 'TESTE';
 		});
-		/*
-		model.findOne(req.params.tag).then(function(objeto){
-      	if(!objeto){ //Objeto não encontrado
-     		 var body = {'nome': 'Desconhecido',
-     		 			  'tagRFID':req.params.tagRFID,
-     		 			  'descricao':'Desconhecido',
-     		 			  'tombo': null,
-     		 			  'sala':req.params.sala
-     					};
-     		model.create(body);
-     		res.json(body);
-     	}else if(objeto.sala == req.params.sala){
-     		 objeto.sala = 'Sem sala ou em trasinção';
-     		 model.findOneAndUpdate(objeto.id ,objeto);
-     		 res.json(objeto);
-     		}
-     	
-   		 }); */
-   		 res.send("ok");
-	};
-	api.atualizar = function(req ,res){
-		obj = {};
-		model.findById(req.params.id, function(err, ob){
-			obj = ob;
-			
+	});*/
+	model.find()
+		.then(function(objeto){
+			res.json(objeto);
+			//io.emit('objetos' ,(obj)=>{
+			//	obj = objeto;
+			//});
+		}, function(error){
+			console.log(error);
+			res.status(500).json(error);
 		});
-		
-		if(req.body.restrincao != ''){
+};
+api.adiciona = function(req,res){
+	var body = req.body;
+    model.create(body)
+    .then(function(obj){
+      console.log('Objeto cadastrado '+body.nome);
+      fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto criado, tagRFID: '+obj.tagRFID+' nome: '+obj.nome+' time:'+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+		    console.log('Arquivo salvo!'+date);
+		});
+      res.json(obj);
+    },function(error){
+     // console.log(error);
+      res.sendStatus(500);
+    });
+    res.redirect('/');
+	};
 
-			if(req.body.restrincao != req.body.sala){
-				req.body.alerta = 1;
-				model.findByIdAndUpdate({_id: req.params.id}, {alerta:1}, {new: true});
+api.buscaPorTag = function(req, res){
+	model.findOne(req.params.tag)
+	.then(function(objeto){
+  	if(!objeto)throw new Error('Objeto não encontrado');
+ 		 res.json(objeto);
+		 });
+};
+api.verificar = function(req, res){
+	var bory = req.body;
+
+	model.findOne({tagRFID:req.body.tagRFID}, (err, obj) =>{
+		//console.log(obj);
+		if(obj == null){
+			obj = {
+				nome: 'Desconhecido',
+				tagRFID:req.body.tagRFID,
+				sala: req.body.sala,
+				descricao: 'Desconhecido',
+				tombo: 0,
+				restrincao:'',
+				alerta:false
 			}
-			else if(req.body.restrincao == req.body.sala){
-				req.body.alerta = 0;
-				model.findByIdAndUpdate({_id: req.params.id}, {alerta:0}, {new: true});
-			}
+			var date = moment().format('YYYY-MM-DD');
+			fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto criado, tagRFID: '+obj.tagRFID+' time:'+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+			    console.log('Arquivo salvo!'+date);
+			});
+			model.create(obj);	
 		}
-		else if(req.body.restrincao == ''){
+		else if(obj.sala == bory.sala){
+			obj.sala = 'Em Tansição';
+			if(obj.restrincao != ''){
+				if(obj.restrincao != obj.sala){
+					obj.alerta = 1;
+					// Enviar email
+					var mailOptions = {};
+					var emails = ' ';
+					modelAdm.find().then(obj =>{
+						for(var i=0; i <  obj.length; i++){
+							if(i == obj.length-1)
+								emails += obj[i].email+' ';
+							
+							else{
+								emails += obj[i].email+', ';
+							}
+						}
+						mailOptions = {
+							from: 'cruiserweights@zoho.com',
+							to: [emails],
+							subject: 'Violação de restrincao - INEXT',
+							text:'O objeto de tag: '+bory.tagRFID+' violou sua restrinção.'
+						};
+
+						transporter.sendMail(mailOptions, function(error, info){
+						  if (error) {
+						    console.log(error);
+						  } else {
+						    console.log('Email sent: ' + info.response);
+						  }
+						}); 	
+					});	
+						
+				}
+				else if(obj.restrincao == obj.sala){
+					obj.alerta = 0;
+				}
+			}
+			model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao, alerta: obj.alerta}, {new:true}).catch((err)=>{
+				console.log(err);
+			});
+			var date = moment().format('YYYY-MM-DD');
+			fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+obj.tagRFID+' id: '+obj.id+' saiu da sala: '+bory.sala+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+				console.log('Arquivo salvo!'+date);
+			});
+		}
+		else if(obj.sala != bory.sala){
+			obj.sala = bory.sala;
+			if(obj.restrincao != ''){
+				if(obj.restrincao != obj.sala){
+					obj.alerta = 1;
+					// Enviar email
+					var mailOptions = {};
+					var emails = ' ';
+					modelAdm.find().then(obj =>{
+						for(var i=0; i <  obj.length; i++){
+							if(i == obj.length-1)
+								emails += obj[i].email+' ';
+							
+							else{
+								emails += obj[i].email+', ';
+							}
+						}
+						mailOptions = {
+							from: 'cruiserweights@zoho.com',
+							to: [emails],
+							subject: 'Violação de restrincao - INEXT',
+							text:'O objeto de tag: '+bory.tagRFID+' violou sua restrinção.'
+						};
+
+						transporter.sendMail(mailOptions, function(error, info){
+						  if (error) {
+						    console.log(error);
+						  } else {
+						    console.log('Email sent: ' + info.response);
+						  }
+						}); 	
+					});	
+				}
+				else if(obj.restrincao == obj.sala){
+					obj.alerta = 0;
+				}
+			}
+			model.findByIdAndUpdate({_id:obj.id}, {sala: obj.sala, restrincao: obj.restrincao, alerta: obj.alerta}, {new:true}).catch((err)=>{
+				console.log(err);
+			});
+			var date = moment().format('YYYY-MM-DD');
+			fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+obj.tagRFID+' id: '+obj.id+' entrou na sala: '+bory.sala+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+				console.log('Arquivo salvo!'+date);
+			});
+		}
+
+	});
+
+		 res.send("ok");
+};
+api.atualizar = function(req ,res){
+	obj = {};
+	model.findById(req.params.id, function(err, ob){
+		obj = ob;
+		
+	});
+	
+	if(req.body.restrincao != ''){
+
+		if(req.body.restrincao != req.body.sala){
+			req.body.alerta = 1;
+			// Enviar email
+			var mailOptions = {};
+					var emails = ' ';
+					modelAdm.find().then(obj =>{
+						for(var i=0; i <  obj.length; i++){
+							if(i == obj.length-1)
+								emails += obj[i].email+' ';
+							
+							else{
+								emails += obj[i].email+', ';
+							}
+						}
+						mailOptions = {
+							from: 'cruiserweights@zoho.com',
+							to: [emails],
+							subject: 'Violação de restrincao - INEXT',
+							text:'O objeto de tag: '+req.body.tagRFID+' violou sua restrinção.'
+						};
+
+						transporter.sendMail(mailOptions, function(error, info){
+						  if (error) {
+						    console.log(error);
+						  } else {
+						    console.log('Email sent: ' + info.response);
+						  }
+						}); 	
+					});	
+			model.findByIdAndUpdate({_id: req.params.id}, {alerta:1}, {new: true});
+		}
+		else if(req.body.restrincao == req.body.sala){
 			req.body.alerta = 0;
 			model.findByIdAndUpdate({_id: req.params.id}, {alerta:0}, {new: true});
 		}
-		var date = moment().format('YYYY-MM-DD');
-		fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+req.body.tagRFID+' id: '+req.params.id+' foi modificado, time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
-			console.log('Arquivo salvo!');
-		});
-		model.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
-	    .then( (obj)=>{
-	      //console.log(obj.id, req.body);
-	      //res.json(obj);
-	      res.redirect('/');
-	    }).catch( (error)=>{
-	      console.log(error);
-	      ressendStatus(500);
-	    });
-		
 	}
+	else if(req.body.restrincao == ''){
+		req.body.alerta = 0;
+		model.findByIdAndUpdate({_id: req.params.id}, {alerta:0}, {new: true});
+	}
+	var date = moment().format('YYYY-MM-DD');
+	fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+req.body.tagRFID+' id: '+req.params.id+' foi modificado, time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+		console.log('Arquivo salvo!');
+	});
+	model.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
+    .then( (obj)=>{
+      //console.log(obj.id, req.body);
+      //res.json(obj);
+      res.redirect('/');
+    }).catch( (error)=>{
+      console.log(error);
+      ressendStatus(500);
+    });
+	
+}
 
-	// ############# IDs ##############
+// ############# IDs ##############
 
-	api.buscaId = function (req, res){
-		model.findById(req.params.id, function(err, obj){
-				res.render('editar2',{ objeto: obj});	
+api.buscaId = function (req, res){
+	model.findById(req.params.id, function(err, obj){
+			res.render('editar2',{ objeto: obj});	
+	});
+
+};
+
+api.buscaPorId = function(req, res){
+	model.findById(req.params.id)
+	.then(function(objeto){
+  	if(!objeto)throw new Error('Objeto não encontrado');
+ 		 res.json(objeto);
+		 });
+};
+
+api.removePorId = function(req,res){
+	model.remove({'_id':req.params.id})
+    .then(function(){
+      fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto id: '+req.params.id+' foi excluido, time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+		console.log('Arquivo salvo!');
 		});
+      res.redirect('/');
+    },function(error){
+      console.log(error);
+      res.sendStatus(500);
+		res.redirect('/');
+		 });
+	
+};
 
-  };
-
-	api.buscaPorId = function(req, res){
-		model.findById(req.params.id)
-    	.then(function(objeto){
-      	if(!objeto)throw new Error('Objeto não encontrado');
-     		 res.json(objeto);
-   		 });
-	};
-
-	api.removePorId = function(req,res){
-		model.remove({'_id':req.params.id})
-	    .then(function(){
-	      fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto id: '+req.params.id+' foi excluido, time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
-			console.log('Arquivo salvo!');
-			});
-	      res.redirect('/');
-	    },function(error){
-	      console.log(error);
-	      res.sendStatus(500);
-   		res.redirect('/');
-   		 });
-		
-	};
-
-	module.exports = api;
+module.exports = api;
