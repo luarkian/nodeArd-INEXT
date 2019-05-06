@@ -5,18 +5,19 @@ const api = require('./../api/objeto');
 const mongoose = require('mongoose');
 
 require('./../models/objeto');
+require('./../models/sala');
 const modelObjeto = mongoose.model('objetosSchema');
+const modelSala = mongoose.model('objetosSchema');
 //app.get('/');
 
 router.get('/',function (req , res){
 	modelObjeto.find(null, function(err,objetos){
-			//res.json(objeto);
-			if(err){
-				throw err;
-			}
-			
-			res.render('index', {title:'Express', objeto: objetos});
-			});
+		//res.json(objeto);
+		if(err){
+			throw err;
+		}
+		res.render('index', {title:'Express', objeto: objetos});
+	});
 	
 })
 router.get('/cadastra',function(req, res){
@@ -33,6 +34,8 @@ router.get('/editar/:id',api.buscaId)
 router.post('/editar/:id', api.atualizar)
 
 router.get('/remove/:id',api.removePorId)
+
+router.get('/inventario',api.inventario)
 
 //router('/nodeArd/rfid/:tag', api.identificaTag)
 //.get(api.buscaPorTag)

@@ -9,7 +9,8 @@ const sala = new schema ({
 	bloco:{
 		type: String,
 		required:false,
+		default:'UFRR'
 	}
 });
 
-mongoose.model('salasSchema',sala);
+mongoose.model('salaSchema',sala);

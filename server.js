@@ -11,8 +11,10 @@ const io = require('socket.io')(http);
 
 require('./app/models/objeto');
 require('./app/models/admin');
+require('./app/models/sala');
 const modelObj = mongoose.model('objetosSchema');
 const modelAdm = mongoose.model('adminSchema');
+const modelSala = mongoose.model('salaSchema');
 //bory paser
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -21,9 +23,11 @@ app.set('view engine', 'ejs')
 
 const router = require('./app/routes/objeto');
 const router2 = require('./app/routes/admin');
+const router3 = require('./app/routes/sala');
 //##
 const adminSchema = require('./app/models/admin')
 const objetoSchema = require('./app/models/objeto')
+const salaSchema = require('./app/models/sala')
 
 //##
 require('./config/database')('localhost/nodeard');
@@ -34,6 +38,7 @@ const path =require("path");
 //Routes
 app.use(router);
 app.use(router2);
+app.use(router3);
 
 /*io.on('connection', (socket)=>{
 		console.log('new connection', socket.id);

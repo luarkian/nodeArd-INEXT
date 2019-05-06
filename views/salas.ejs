@@ -1,0 +1,40 @@
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	
+	
+	<title>INEXT - Quem Notificar</title>
+	<div>
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="/">INEXT</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="/">Home</a></li>
+		      <li><a href="cadastra">Cadastrar Objeto Manual</a></li>
+		      <li><a href="admin">Quem Notificar</a></li>
+		      <li><a href="inventario">Inventário</a></li>
+		      <li><a href="sala"><b>Ger. de Salas</b></a></li>
+		    </ul>	
+		  </div>
+		</nav>
+		<div class="container">
+	<table class= "tableUsuario">
+		<tbory>
+			<tr>
+				<td><b>Sala</b></td>
+				<td></td>
+				<td></td>
+			</tr>	
+		</tbory>
+		<% for(var i =0; i < sala.length; i++){ %>
+			<tr>
+				<td><%= sala[i].nome %></td>
+				<td><a href="/editarSala/<%=sala[i]._id %>">Editar</a></td>
+				<td><a href="/removeSala/<%=sala[i]._id %>">Remover</a></td>
+			</tr>
+		
+	<%	}%>	
+		</table>
+	</div>

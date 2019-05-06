@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 require('./../models/objeto');
 require('./../models/admin');
+require('./../models/sala');
 const model = mongoose.model('objetosSchema');
 const modelAdm = mongoose.model('adminSchema');
+const modelSala = mongoose.model('salaSchema');
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);	
@@ -29,10 +31,8 @@ api.lista = function(req,res){
 	});*/
 	model.find()
 		.then(function(objeto){
+		
 			res.json(objeto);
-			//io.emit('objetos' ,(obj)=>{
-			//	obj = objeto;
-			//});
 		}, function(error){
 			console.log(error);
 			res.status(500).json(error);
@@ -40,6 +40,12 @@ api.lista = function(req,res){
 };
 api.adiciona = function(req,res){
 	var body = req.body;
+	modelSala.findOne({nome:body.sala}, (sala)=>{
+		if(sala == null){
+			var nome_sala = {nome:req.body.sala}
+			modelSala.create(nome_sala);
+		}
+	});
     model.create(body)
     .then(function(obj){
       console.log('Objeto cadastrado '+body.nome);
@@ -63,7 +69,12 @@ api.buscaPorTag = function(req, res){
 };
 api.verificar = function(req, res){
 	var bory = req.body;
-
+	modelSala.findOne({nome:body.sala}, (sala)=>{
+		if(sala == null){
+			var nome_sala = {nome:req.body.sala}
+			modelSala.create(nome_sala);
+		}
+	});
 	model.findOne({tagRFID:req.body.tagRFID}, (err, obj) =>{
 		//console.log(obj);
 		if(obj == null){
@@ -184,7 +195,12 @@ api.atualizar = function(req ,res){
 		obj = ob;
 		
 	});
-	
+	modelSala.findOne({nome:req.body.sala}, (sala)=>{
+		if(sala == null){
+			var nome_sala = {nome:req.body.sala}
+			modelSala.create(nome_sala);
+		}
+	});
 	if(req.body.restrincao != ''){
 
 		if(req.body.restrincao != req.body.sala){
@@ -273,6 +289,9 @@ api.removePorId = function(req,res){
 		res.redirect('/');
 		 });
 	
+};
+api.inventario =function(req, res){
+	res.render('inventario');
 };
 
 module.exports = api;
