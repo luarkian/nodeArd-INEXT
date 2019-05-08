@@ -3,7 +3,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	
 	
-	<title>INEXT - Quem Notificar</title>
+	<title>INEXT - Inventário</title>
 	<div>
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
@@ -19,4 +19,32 @@
 		    </ul>	
 		  </div>
 		</nav>
-		<div>
+		<div class="container">
+					<% for (var i = 0; i < sala.length; i++){ %>
+						<h3>Objetos na sala: <%= sala[i].nome %></h3>
+						<table>
+							<tbory>
+								<tr>
+									<td> Nome</td>
+									<td> TagRFID</td>
+									<td> Descrição </td>
+									<td> Tombo</td>
+									<td> Restrinção</td>
+								</tr>	
+							</tbory>
+							<% for(var j = 0; j <  objeto.length; j++){
+								if( objeto[j].sala == sala[i].nome){ %>
+									<tr>
+										<td><%= objeto[j].nome %></td>
+										<td><%= objeto[j].tagRFID %></td>
+										<td><%= objeto[j].descricao %></td>
+										<td><%= objeto[j].tombo %></td>
+										<td><%= objeto[j].restrincao %></td>
+									</tr>
+						
+						
+						<% 	}%>
+						<% } %>
+						</table>
+				<%	} %>
+	</div>	

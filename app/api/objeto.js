@@ -291,7 +291,18 @@ api.removePorId = function(req,res){
 	
 };
 api.inventario =function(req, res){
-	res.render('inventario');
+	/*modelSala.find().then(salas =>{
+		model.find().then( obj =>{
+			res.render('inventario',{title: 'Salas', sala: salas, objeto: obj});
+		});	
+	});*/
+
+Promise.all([modelSala.find(),model.find()])
+	.then( ([ salas, obj ]) => {
+  		//console.log(salas,obj);
+  		res.render('inventario',{title: 'Salas', sala:salas,objeto:obj});
+	});
+	
 };
 
 module.exports = api;
