@@ -243,9 +243,13 @@ api.atualizar = function(req ,res){
 		req.body.alerta = 0;
 		model.findByIdAndUpdate({_id: req.params.id}, {alerta:0}, {new: true});
 	}
-	var date = moment().format('YYYY-MM-DD');
-	fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+req.body.tagRFID+' id: '+req.params.id+' foi modificado, time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
-		console.log('Arquivo salvo!');
+	model.findById(req.params.id)
+		.then(function(objeto){
+		
+		var date = moment().format('YYYY-MM-DD');
+		fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+req.body.tagRFID+', id: '+req.params.id+', nome: '+objeto.nome+', descrição: '+objeto.descrição+', tombo: '+objeto.tombo+', localização (sala): '+objeto.sala+', restrinção: '+objeto.restrincao+', foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrinção]['+req.body.nome+','+req.body.tagRFID+','+req.body.descricao+','+req.body.tombo+','+req.body.sala+','+req.body.restrincao+'], time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+			console.log('Arquivo salvo!');
+		});
 	});
 	model.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
     .then( (obj)=>{
