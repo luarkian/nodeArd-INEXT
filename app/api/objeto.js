@@ -160,7 +160,8 @@ api.verificar = function(req, res){
 							from: 'cruiserweights@zoho.com',
 							to: [emails],
 							subject: 'Violação de restrincao - INEXT',
-							text:'O objeto de tag: '+bory.tagRFID+' violou sua restrinção.'
+							text:'O objeto de tag: '+bory.tagRFID+' violou sua restrinção.',
+							html:'<strong>O objeto a seguir violou sua restrinção: </strong><br> Nome: '+body.nome+'<br>Tag RFID: '+body.tagRFID+'<br>Descrição: '+body.descricao+'<br>Tombo: '+tombo+'<br>Localização(Sala): '+body.sala+'<br> Restrinção: '+body.restrincao
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){
@@ -221,7 +222,8 @@ api.atualizar = function(req ,res){
 							from: 'cruiserweights@zoho.com',
 							to: [emails],
 							subject: 'Violação de restrincao - INEXT',
-							text:'O objeto de tag: '+req.body.tagRFID+' violou sua restrinção.'
+							text:'O objeto de tag: '+req.body.tagRFID+' violou sua restrinção.',
+							html:'<strong>O objeto a seguir violou sua restrinção: </strong><br> Nome: '+req.body.nome+'<br>Tag RFID: '+req.body.tagRFID+'<br>Descrição: '+req.body.descricao+'<br>Tombo: '+req.body.tombo+'<br>Localização(Sala): '+req.body.sala+'<br> Restrinção: '+req.body.restrincao
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){
@@ -251,6 +253,10 @@ api.atualizar = function(req ,res){
 			console.log('Arquivo salvo!');
 		});
 	});
+	var date = moment().format('YYYY-MM-DD');
+	var body = req.body;
+	console.log(date);
+	body.alteracao = date;	
 	model.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
     .then( (obj)=>{
       //console.log(obj.id, req.body);
