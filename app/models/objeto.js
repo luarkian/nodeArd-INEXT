@@ -30,6 +30,10 @@ const objeto = new schema ({
 		type: Number,
 		required:true,
 		default:0
+	},
+	alteracao:{
+		type: String,
+		required: false
 	}
 });
 
