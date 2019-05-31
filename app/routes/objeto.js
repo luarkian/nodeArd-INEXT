@@ -29,6 +29,8 @@ router.get('/objetos', api.lista)
 
 router.post('/verificacao',api.verificar)
 
+router.post('/ver',api.ver)
+
 router.get('/editar/:id',api.buscaId)
 
 router.post('/editar/:id', api.atualizar)

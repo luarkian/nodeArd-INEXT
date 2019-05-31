@@ -67,6 +67,12 @@ api.buscaPorTag = function(req, res){
  		 res.json(objeto);
 		 });
 };
+api.ver = function(req, res){
+	var body = req.body;
+	console.log(body);
+	res.send("ok1");
+};
+
 api.verificar = function(req, res){
 	var bory = req.body;
 	modelSala.findOne({nome:body.sala}, (sala)=>{
