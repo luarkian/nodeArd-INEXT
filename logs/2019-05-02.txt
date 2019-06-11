@@ -1,0 +1,41 @@
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:05
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:08
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:17
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:18
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:20
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:21
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:23
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:24
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:25
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:26
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:27
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:27
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:29
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:29
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:30
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:30
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:33
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:33
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:34
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17saiu da sala: Sala time: 16:34
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17entrou na sala: Sala time: 16:35
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:08
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:09
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:09
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:11
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:12
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:13
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:15
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:18
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:18
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:19
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:20
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:21
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:36
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:37
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:39
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 foi modificado, time: 17:39
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 saiu da sala: Sala time: 17:48
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 entrou na sala: Sala time: 17:53
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 saiu da sala: Sala time: 17:53
+Objeto TagRFID:  56 6C 96 A5  id: 5cc20cdd9b89cf2a5c2e4e17 entrou na sala: Sala time: 17:54
