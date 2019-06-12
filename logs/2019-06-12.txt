@@ -1,0 +1,10 @@
+Objeto criado, tagRFID:  56 6C 96 A5 time:08:59
+Objeto id: 5d00f727d8faa62824eed487 foi excluido, time: 09:07
+Objeto criado, tagRFID:  56 6C 96 A5 time:09:07
+Objeto TagRFID:  56 6C 96 A5, id: 5d00f909806fc937f43324cf, nome: Desconhecido, descrição: undefined, tombo: 0, localização (sala): 101, restrinção: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrinção][Cadeira, 56 6C 96 A5,cadeira azul,20180619,101,], time: 09:12
+Objeto TagRFID:  56 6C 96 A5 id: 5d00f909806fc937f43324cf saiu da sala: 101 time: 09:20
+Objeto TagRFID:  56 6C 96 A5 id: 5d00f909806fc937f43324cf entrou na sala: 101 time: 09:20
+Objeto TagRFID:  56 6C 96 A5 id: 5d00f909806fc937f43324cf saiu da sala: 101 time: 09:22
+Objeto TagRFID:  56 6C 96 A5 id: 5d00f909806fc937f43324cf entrou na sala: 101 time: 09:22
+Objeto TagRFID:  56 6C 96 A5 id: 5d00f909806fc937f43324cf saiu da sala: 101 time: 09:23
+Objeto TagRFID:  56 6C 96 A5 id: 5d00f909806fc937f43324cf entrou na sala: 101 time: 09:23
