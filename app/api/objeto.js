@@ -119,8 +119,8 @@ api.verificar = function(req, res){
 						mailOptions = {
 							from: 'cruiserweights@zoho.com',
 							to: [emails],
-							subject: 'Violação de restrincao - INEXT',
-							text:'O objeto de tag: '+body.tagRFID+' violou sua restrinção.'
+							subject: 'Violação de restrição - INEXT',
+							text:'O objeto de tag: '+body.tagRFID+' violou sua restrição.'
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){
@@ -165,9 +165,9 @@ api.verificar = function(req, res){
 						mailOptions = {
 							from: 'cruiserweights@zoho.com',
 							to: [emails],
-							subject: 'Violação de restrincao - INEXT',
-							text:'O objeto de tag: '+body.tagRFID+' violou sua restrinção.',
-							html:'<strong>O objeto a seguir violou sua restrinção: </strong><br> Nome: '+body.nome+'<br>Tag RFID: '+body.tagRFID+'<br>Descrição: '+body.descricao+'<br>Tombo: '+tombo+'<br>Localização(Sala): '+body.sala+'<br> Restrinção: '+body.restrincao
+							subject: 'Violação de restrição - INEXT',
+							text:'O objeto de tag: '+body.tagRFID+' violou sua restrição.',
+							html:'<strong>O objeto a seguir violou sua restrição: </strong><br> Nome: '+body.nome+'<br>Tag RFID: '+body.tagRFID+'<br>Descrição: '+body.descricao+'<br>Tombo: '+tombo+'<br>Localização(Sala): '+body.sala+'<br> Restrição: '+body.restrincao
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){
@@ -227,9 +227,9 @@ api.atualizar = function(req ,res){
 						mailOptions = {
 							from: 'cruiserweights@zoho.com',
 							to: [emails],
-							subject: 'Violação de restrincao - INEXT',
-							text:'O objeto de tag: '+req.body.tagRFID+' violou sua restrinção.',
-							html:'<strong>O objeto a seguir violou sua restrinção: </strong><br> Nome: '+req.body.nome+'<br>Tag RFID: '+req.body.tagRFID+'<br>Descrição: '+req.body.descricao+'<br>Tombo: '+req.body.tombo+'<br>Localização(Sala): '+req.body.sala+'<br> Restrinção: '+req.body.restrincao
+							subject: 'Violação de restrição - INEXT',
+							text:'O objeto de tag: '+req.body.tagRFID+' violou sua restrição.',
+							html:'<strong>O objeto a seguir violou sua restrição: </strong><br> Nome: '+req.body.nome+'<br>Tag RFID: '+req.body.tagRFID+'<br>Descrição: '+req.body.descricao+'<br>Tombo: '+req.body.tombo+'<br>Localização(Sala): '+req.body.sala+'<br> Restrição: '+req.body.restrincao
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){
@@ -255,7 +255,7 @@ api.atualizar = function(req ,res){
 		.then(function(objeto){
 		
 		var date = moment().format('YYYY-MM-DD');
-		fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+req.body.tagRFID+', id: '+req.params.id+', nome: '+objeto.nome+', descrição: '+objeto.descrição+', tombo: '+objeto.tombo+', localização (sala): '+objeto.sala+', restrinção: '+objeto.restrincao+', foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrinção]['+req.body.nome+','+req.body.tagRFID+','+req.body.descricao+','+req.body.tombo+','+req.body.sala+','+req.body.restrincao+'], time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
+		fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Objeto TagRFID: '+req.body.tagRFID+', id: '+req.params.id+', nome: '+objeto.nome+', descrição: '+objeto.descrição+', tombo: '+objeto.tombo+', localização (sala): '+objeto.sala+', restrição: '+objeto.restrincao+', foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição]['+req.body.nome+','+req.body.tagRFID+','+req.body.descricao+','+req.body.tombo+','+req.body.sala+','+req.body.restrincao+'], time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
 			console.log('Arquivo salvo!');
 		});
 	});

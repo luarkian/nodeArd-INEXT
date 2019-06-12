@@ -12,7 +12,7 @@ api.listar = function(req, res){
 };
 
 api.excluir = function (req, res){
-	model.remove({'_id':req.params.id})
+	model.deleteOne({'_id':req.params.id})
     .then(function(){
  //     fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','Sala id: '+req.params.id+' foi excluido, time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
 //		console.log('Arquivo salvo!');
