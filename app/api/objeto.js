@@ -120,7 +120,8 @@ api.verificar = function(req, res){
 							from: 'cruiserweights@zoho.com',
 							to: [emails],
 							subject: 'Violação de restrição - INEXT',
-							text:'O objeto de tag: '+body.tagRFID+' violou sua restrição.'
+							text:'O objeto de tag: '+body.tagRFID+' violou sua restrição.',
+							html:'<strong>O objeto a seguir violou sua restrição: </strong><br> Nome: '+body.nome+'<br>Tag RFID: '+body.tagRFID+'<br>Descrição: '+body.descricao+'<br>Tombo: '+tombo+'<br>Localização(Sala): '+body.sala+'<br> Restrição: '+body.restrincao
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){
