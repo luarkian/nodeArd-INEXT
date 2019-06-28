@@ -9,7 +9,7 @@ i = 1
 while i < 6:
     print("Aguardando leitura da TAG RFID")
     a = str(ser.readline())
-    b = a[2:20]
+    b = a[2:18]
     a = b.split(":")
     obj = {
         "sala":a[0],
