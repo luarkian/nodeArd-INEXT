@@ -75,7 +75,7 @@ api.ver = function(req, res){
 
 api.verificar = function(req, res){
 	var body = req.body;
-	modelSala.findOne(body.sala, (sala)=>{
+	modelSala.findOne({nome:body.sala}, (sala)=>{
 		if(sala == null){
 			var nome_sala = {nome:req.body.sala}
 			modelSala.create(nome_sala);
@@ -121,7 +121,7 @@ api.verificar = function(req, res){
 							to: [emails],
 							subject: 'Violação de restrição - INEXT',
 							text:'O objeto de tag: '+body.tagRFID+' violou sua restrição.',
-							html:'<strong>O objeto a seguir violou sua restrição: </strong><br> Nome: '+body.nome+'<br>Tag RFID: '+body.tagRFID+'<br>Descrição: '+body.descricao+'<br>Tombo: '+tombo+'<br>Localização(Sala): '+body.sala+'<br> Restrição: '+body.restrincao
+							html:'<strong>O objeto a seguir violou sua restrição: </strong><br> Nome: '+body.nome+'<br>Tag RFID: '+body.tagRFID+'<br>Descrição: '+body.descricao+'<br>Tombo: '+body.tombo+'<br>Localização(Sala): '+body.sala+'<br> Restrição: '+body.restrincao
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){
@@ -168,7 +168,7 @@ api.verificar = function(req, res){
 							to: [emails],
 							subject: 'Violação de restrição - INEXT',
 							text:'O objeto de tag: '+body.tagRFID+' violou sua restrição.',
-							html:'<strong>O objeto a seguir violou sua restrição: </strong><br> Nome: '+body.nome+'<br>Tag RFID: '+body.tagRFID+'<br>Descrição: '+body.descricao+'<br>Tombo: '+tombo+'<br>Localização(Sala): '+body.sala+'<br> Restrição: '+body.restrincao
+							html:'<strong>O objeto a seguir violou sua restrição: </strong><br> Nome: '+body.nome+'<br>Tag RFID: '+body.tagRFID+'<br>Descrição: '+body.descricao+'<br>Tombo: '+body.tombo+'<br>Localização(Sala): '+body.sala+'<br> Restrição: '+body.restrincao
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){

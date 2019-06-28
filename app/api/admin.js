@@ -60,14 +60,16 @@ api.atualizaDados = function (req, res ){
 	res.redirect('/admin');
 };
 api.removePorId = function(req,res){
-	model.deleteOne({'_id':req.params.id}, function(user){
+	model.deleteOne({'_id':req.params.id}).then( (user)=>{
 	      var date = moment().format('YYYY-MM-DD');
 		  fs.writeFile('./../nodeArd1-INEXT/logs/'+date+'.txt','User: id: '+req.params.id+', email: '+user.email+' removido'+' time: '+moment().format('HH:mm')+'\n',{enconding:'utf-8',flag: 'a'}, function (err) {
 			    
 			console.log('Arquivo salvo!'+date);
 		});	
-	      res.redirect('/admin');
+		  //model.deleteOne({'_id':req.params.id});
+			res.redirect('/admin');
 	    });
+	
 };
 
 module.exports = api;

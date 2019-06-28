@@ -1,0 +1,18 @@
+Objeto criado, tagRFID:  45 D4 D4 35 time:17:18
+Objeto TagRFID:  45 D4 D4 35, id: 5d13e14322159a0e288e74c0, nome: Desconhecido, descrição: undefined, tombo: 0, localização (sala): 202, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][cadeira, 45 D4 D4 35,Desconhecido,0,202,], time: 17:19
+Objeto criado, tagRFID:  55 BC 06 88 time:17:19
+Objeto TagRFID:  55 BC 06 88, id: 5d13e15322159a0e288e74c2, nome: Desconhecido, descrição: undefined, tombo: 0, localização (sala): 202, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][monitor, 55 BC 06 88,Desconhecido,0,202,], time: 17:19
+Objeto criado, tagRFID:  56 6C 96 A5 time:17:19
+Objeto TagRFID:  56 6C 96 A5, id: 5d13e16322159a0e288e74c4, nome: Desconhecido, descrição: undefined, tombo: 0, localização (sala): 101, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][notebook, 56 6C 96 A5,Desconhecido,0,101,], time: 17:19
+Objeto criado, tagRFID:  15 5B 0E 88 time:17:19
+Objeto TagRFID:  15 5B 0E 88, id: 5d13e17622159a0e288e74c6, nome: Desconhecido, descrição: undefined, tombo: 0, localização (sala): 101, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][tablet, 15 5B 0E 88,Desconhecido,0,101,], time: 17:20
+Objeto TagRFID:  45 D4 D4 35 id: 5d13e14322159a0e288e74c0 saiu da sala: 202 time: 17:20
+Objeto TagRFID:  45 D4 D4 35 id: 5d13e14322159a0e288e74c0 entrou na sala: 101 time: 17:20
+Objeto TagRFID:  15 5B 0E 88 id: 5d13e17622159a0e288e74c6 saiu da sala: 101 time: 17:20
+Objeto TagRFID:  15 5B 0E 88 id: 5d13e17622159a0e288e74c6 entrou na sala: 202 time: 17:20
+Objeto TagRFID:  56 6C 96 A5 id: 5d13e16322159a0e288e74c4 entrou na sala: 202 time: 17:20
+Objeto TagRFID:  56 6C 96 A5, id: 5d13e16322159a0e288e74c4, nome: notebook, descrição: undefined, tombo: 0, localização (sala): 202, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][notebook, 56 6C 96 A5,Desconhecido,0,202,202], time: 17:21
+Objeto TagRFID:  56 6C 96 A5 id: 5d13e16322159a0e288e74c4 saiu da sala: 202 time: 17:21
+Objeto TagRFID:  56 6C 96 A5 id: 5d13e16322159a0e288e74c4 entrou na sala: 101 time: 17:21
+Objeto TagRFID:  15 5B 0E 88, id: 5d13e17622159a0e288e74c6, nome: tablet, descrição: undefined, tombo: 0, localização (sala): 202, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][tablet, 15 5B 0E 88,verde,0,202,], time: 17:25
+Objeto TagRFID:  56 6C 96 A5, id: 5d13e16322159a0e288e74c4, nome: notebook, descrição: undefined, tombo: 0, localização (sala): 101, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][notebook, 56 6C 96 A5,Desconhecido,0,101,], time: 17:25

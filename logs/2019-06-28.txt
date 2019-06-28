@@ -1,0 +1,42 @@
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 101 time: 14:37
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 101 time: 14:38
+Objeto TagRFID:  56 6C 96 A5 id: 5d152e75ba7a7b135823dccd saiu da sala: 101 time: 14:38
+Objeto TagRFID:  56 6C 96 A5 id: 5d152e75ba7a7b135823dccd entrou na sala: 202 time: 14:38
+Objeto TagRFID:  15 5B 0E 88 id: 5d152a96ba7a7b135823dcca saiu da sala: 202 time: 14:38
+Objeto TagRFID:  15 5B 0E 88 id: 5d152a96ba7a7b135823dcca entrou na sala: 101 time: 14:38
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 101 time: 14:39
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 14:40
+User create: nome: Luarkian, email: kaype_x@hotmail.com time: 15:00
+User create: nome: Luarkian, email: luarkian@gmail.com time: 15:01
+Objeto TagRFID:  15 5B 0E 88, id: 5d152a96ba7a7b135823dcca, nome: tablet, descrição: undefined, tombo: 0, localização (sala): 101, restrição: 101, foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][tablet, 15 5B 0E 88,Desconhecido,0,101,101], time: 15:08
+Objeto TagRFID:  56 6C 96 A5, id: 5d152e75ba7a7b135823dccd, nome: notebook, descrição: undefined, tombo: 0, localização (sala): 202, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][notebook, 56 6C 96 A5,Desconhecido,0,202,202], time: 15:08
+Objeto TagRFID:  55 BC 06 88, id: 5d152e97ba7a7b135823dccf, nome: monitor, descrição: undefined, tombo: 0, localização (sala): 202, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][monitor, 55 BC 06 88,Desconhecido,0,202,202], time: 15:08
+Objeto TagRFID:  45 D4 D4 35, id: 5d152eb1ba7a7b135823dcd2, nome: cadeira, descrição: undefined, tombo: 0, localização (sala): 101, restrição: , foi modificado para: [nome, tagRFID, descrição, tombo, localização(sala), restrição][cadeira, 45 D4 D4 35,Desconhecido,0,101,101], time: 15:08
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 202 time: 15:48
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 15:52
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 202 time: 15:52
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 15:54
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 202 time: 15:54
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 16:10
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 202 time: 16:10
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 16:12
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 202 time: 16:12
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 16:14
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 202 time: 16:14
+Objeto TagRFID:  45 D4 D4 35 id: 5d152eb1ba7a7b135823dcd2 saiu da sala: 101 time: 16:19
+Objeto TagRFID:  15 5B 0E 88 id: 5d152a96ba7a7b135823dcca saiu da sala: 101 time: 16:19
+Objeto TagRFID:  56 6C 96 A5 id: 5d152e75ba7a7b135823dccd saiu da sala: 202 time: 16:20
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 16:48
+Objeto TagRFID:  15 5B 0E 88 id: 5d152a96ba7a7b135823dcca entrou na sala: 101 time: 16:48
+Objeto TagRFID:  45 D4 D4 35 id: 5d152eb1ba7a7b135823dcd2 entrou na sala: 101 time: 16:48
+Objeto TagRFID:  56 6C 96 A5 id: 5d152e75ba7a7b135823dccd entrou na sala: 202 time: 16:48
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 202 time: 17:25
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 17:25
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf saiu da sala: 202 time: 17:25
+Objeto TagRFID:  55 BC 06 88 id: 5d152e97ba7a7b135823dccf entrou na sala: 202 time: 17:26
+Objeto TagRFID:  56 6C 96 A5 id: 5d152e75ba7a7b135823dccd saiu da sala: 202 time: 17:26
+Objeto TagRFID:  56 6C 96 A5 id: 5d152e75ba7a7b135823dccd entrou na sala: 202 time: 17:26
+Objeto TagRFID:  45 D4 D4 35 id: 5d152eb1ba7a7b135823dcd2 saiu da sala: 101 time: 17:26
+Objeto TagRFID:  45 D4 D4 35 id: 5d152eb1ba7a7b135823dcd2 entrou na sala: 101 time: 17:26
+Objeto TagRFID:  45 D4 D4 35 id: 5d152eb1ba7a7b135823dcd2 entrou na sala: 202 time: 17:26
+Objeto TagRFID:  45 D4 D4 35 id: 5d152eb1ba7a7b135823dcd2 entrou na sala: 101 time: 17:26
