@@ -15,7 +15,7 @@
     "express-ejs-layouts": "^2.5.0",
     "moment": "^2.24.0",
     "mongodb": "^3.1.13",
-    "mongoose": "^5.4.15",
+    "mongoose": "^5.7.5",
     "mongoose-socket.io": "^1.2.1",
     "nodemailer": "^6.1.1",
     "serialport": "^7.1.4",
